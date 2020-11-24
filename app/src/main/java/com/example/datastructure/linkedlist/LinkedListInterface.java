@@ -12,7 +12,7 @@ public interface LinkedListInterface<E, T> {
      * @param i 位置
      * @return
      */
-    E get(int i);
+    T get(int i);
 
     /**
      * 移除链表元素
