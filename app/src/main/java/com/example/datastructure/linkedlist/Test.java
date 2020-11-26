@@ -25,5 +25,30 @@ public class Test {
         for (int i = 0; i < linked.getSize(); i++) {
             System.out.println("链表" + i + "节点:" + linked.get(i));
         }
+
+        MyOneWayLinked<Integer> linked1 = new MyOneWayLinked<>();
+        linked1.add(4);
+        linked1.add(7);
+        linked1.add(8);
+        linked1.add(3);
+        linked1.add(2);
+        linked1.add(5);
+        linked1.add(6);
+        linked1.add(9);
+        System.out.println("链表反转：=====================");
+        MyOneWayLinked.Node node = linked1.getHead();
+        System.out.print("原始数据：");
+        while (node!=null){
+            System.out.print(node.value+";");
+            node = node.next;
+        }
+        System.out.println();
+//        AlgorithmAboutLinked.chainlistinversion(linked1.getHead());
+        AlgorithmAboutLinked.chainlistinversion1(linked1.getHead());
+        //测试
+        MyOneWayLinked.Node node1 = new MyOneWayLinked.Node(null, 3);
+        MyOneWayLinked.Node node2 = node1;
+        node1.value = 0;
+        System.out.println("node1:"+node1.value+"#####"+"node2:"+node2.value);
     }
 }

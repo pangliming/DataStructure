@@ -10,7 +10,7 @@
 *.dex
 
 # Java class files
-*.class
+*.classgit rm -r --cached target 
 
 # Generated files
 bin/
@@ -87,3 +87,8 @@ lint/tmp/
 # lint/reports/
 
 app/libs/
+.idea/codeStyles/
+.idea/inspectionProfiles/
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
