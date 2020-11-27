@@ -50,5 +50,23 @@ public class Test {
         MyOneWayLinked.Node node2 = node1;
         node1.value = 0;
         System.out.println("node1:"+node1.value+"#####"+"node2:"+node2.value);
+
+
+        MyOneWayLinked<Integer> sortNode1 = new MyOneWayLinked();
+        sortNode1.add(3);
+        sortNode1.add(4);
+        sortNode1.add(5);
+        sortNode1.add(7);
+        sortNode1.add(9);
+
+        MyOneWayLinked<Integer> sortNode2 = new MyOneWayLinked<>();
+        sortNode2.add(2);
+        sortNode2.add(4);
+        sortNode2.add(6);
+        sortNode2.add(8);
+        sortNode2.add(10);
+
+
+        AlgorithmAboutLinked.sortMerge(sortNode1.getHead(), sortNode2.getHead());
     }
 }

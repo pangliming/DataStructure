@@ -71,4 +71,56 @@ public class AlgorithmAboutLinked {
         return tempNode;
     }
 
+    /**两个有序链表合并成一个有序链表
+     * @param node1
+     * @param node2
+     */
+    public static void sortMerge(MyOneWayLinked.Node node1, MyOneWayLinked.Node node2){
+        System.out.println("合并有序链表：");
+        MyOneWayLinked.Node test = recursionMergeSort(node1, node2);
+        int i = 0;
+        while (test != null) {
+            if (i == 15) {
+                break;
+            }
+            System.out.print(test.value+";");
+            test = test.next;
+            i++;
+        }
+
+    }
+
+
+    /**递归合并两个有序链表
+     * @param node1
+     * @param node2
+     * @return
+     */
+    public static MyOneWayLinked.Node recursionMergeSort(MyOneWayLinked.Node<Integer> node1, MyOneWayLinked.Node<Integer> node2){
+        if (null == node1 && null == node2) {
+            return null;
+        }
+        if (null == node1){
+            return node2;
+        }
+        if (null == node2){
+            return node1;
+        }
+        if (node1.value < node2.value){
+            node1.next = recursionMergeSort(node1.next, node2);
+            return node1;
+        }else {
+            System.out.print("node1:"+node1.value+"#node2:"+node2.value);
+            System.out.println();
+            node2.next = recursionMergeSort(node1, node2.next);
+            System.out.print("node1:"+node1.value+"#node2:"+node2.value);
+            System.out.println();
+            return node2;
+        }
+
+
+
+
+    }
+
 }
