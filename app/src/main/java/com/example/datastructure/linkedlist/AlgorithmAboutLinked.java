@@ -46,7 +46,6 @@ public class AlgorithmAboutLinked {
             if (i == 10) {
                 break;
             }
-            System.out.print(" ##" + test.value + ";");
             test = test.next;
             i++;
         }
@@ -76,6 +75,40 @@ public class AlgorithmAboutLinked {
     }
 
     /**
+     * 后继结点
+     */
+    private static MyOneWayLinked.Node<Integer> successor = null;
+
+    /**
+     * 递归反转前n个节点
+     *
+     * @param head 头结点
+     * @param n    前n个几点
+     * @return 反转后的头结点
+     */
+    public static MyOneWayLinked.Node<Integer> reverseN(MyOneWayLinked.Node<Integer> head, int n) {
+
+        if (1 == n) {
+            successor = head.next;
+            return head;
+        }
+
+        MyOneWayLinked.Node<Integer> last = reverseN(head.next, n - 1);
+        head.next.next = head;
+        head.next = successor;
+        return last;
+    }
+
+    public static MyOneWayLinked.Node<Integer> reverseBetween(MyOneWayLinked.Node<Integer> head, int m, int n) {
+        if (1 == m) {
+            return reverseN(head, n);
+        }
+
+        head.next = reverseBetween(head.next, m - 1, n - 1);
+        return head;
+    }
+
+    /**
      * 两个有序链表合并成一个有序链表
      *
      * @param node1
@@ -89,6 +122,12 @@ public class AlgorithmAboutLinked {
             System.out.print(test.value + ";");
             test = test.next;
         }
+        System.out.println("Test:");
+        while (node1 != null) {
+            System.out.print(node1.value);
+            node1 = node1.next;
+        }
+
         MyOneWayLinked.Node test1 = iterationMergeSort(node1, node2);
         System.out.println("迭代：");
         while (test1 != null) {
@@ -121,31 +160,29 @@ public class AlgorithmAboutLinked {
             node1.next = recursionMergeSort(node1.next, node2);
             return node1;
         } else {
-            System.out.print("node1:" + node1.value + "#node2:" + node2.value);
-            System.out.println();
             node2.next = recursionMergeSort(node1, node2.next);
-            System.out.print("node1:" + node1.value + "#node2:" + node2.value);
-            System.out.println();
             return node2;
         }
     }
 
-    /**迭代方式合并有序链表
+    /**
+     * 迭代方式合并有序链表
+     *
      * @param node1
      * @param node2
      * @return
      */
-    public static MyOneWayLinked.Node iterationMergeSort(MyOneWayLinked.Node<Integer> node1, MyOneWayLinked.Node<Integer> node2){
+    public static MyOneWayLinked.Node iterationMergeSort(MyOneWayLinked.Node<Integer> node1, MyOneWayLinked.Node<Integer> node2) {
         if (node1 == null && node2 == null) {
             return null;
         }
-        MyOneWayLinked.Node preHead = new MyOneWayLinked.Node(null, -1);
-        MyOneWayLinked.Node preNode = preHead;
+        MyOneWayLinked.Node<Integer> preHead = new MyOneWayLinked.Node(null, -1);
+        MyOneWayLinked.Node<Integer> preNode = preHead;
         while (node1 != null && node2 != null) {
             if (node1.value < node2.value) {
                 preNode.next = node1;
                 node1 = node1.next;
-            }else {
+            } else {
                 preNode.next = node2;
                 node2 = node2.next;
             }

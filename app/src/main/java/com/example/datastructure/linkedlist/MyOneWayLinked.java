@@ -108,7 +108,7 @@ public class MyOneWayLinked<T> implements LinkedListInterface<MyOneWayLinked.Nod
     /**
      * @return 获取链表
      */
-    public Node<T> getHead(){
+    public Node<T> getHead() {
         return head;
     }
 
@@ -118,10 +118,10 @@ public class MyOneWayLinked<T> implements LinkedListInterface<MyOneWayLinked.Nod
      * @param <T>
      */
     public static class Node<T> {
-        Node next;
+        Node<T> next;
         T value;
 
-        public Node(Node next, T value) {
+        public Node(Node<T> next, T value) {
             this.next = next;
             this.value = value;
         }

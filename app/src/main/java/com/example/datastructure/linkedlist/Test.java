@@ -38,7 +38,7 @@ public class Test {
         linked1.add(6);
         linked1.add(9);
         System.out.println("链表反转：=====================");
-        MyOneWayLinked.Node node = linked1.getHead();
+        MyOneWayLinked.Node<Integer> node = linked1.getHead();
         System.out.print("原始数据：");
         while (node!=null){
             System.out.print(node.value+";");
@@ -70,5 +70,37 @@ public class Test {
 
 
         AlgorithmAboutLinked.sortMerge(sortNode1.getHead(), sortNode2.getHead());
+
+        MyOneWayLinked<Integer> reverseNode = new MyOneWayLinked<>();
+        reverseNode.add(1);
+        reverseNode.add(2);
+        reverseNode.add(3);
+        reverseNode.add(4);
+        reverseNode.add(5);
+        reverseNode.add(6);
+
+        MyOneWayLinked.Node<Integer> head = AlgorithmAboutLinked.reverseN(reverseNode.getHead(), 4);
+        System.out.println();
+        System.out.println("反转前N个结点：");
+        while (head != null) {
+            System.out.print(head.value+"；");
+            head = head.next;
+        }
+
+        MyOneWayLinked<Integer> reverseNode1 = new MyOneWayLinked<>();
+        reverseNode1.add(1);
+        reverseNode1.add(2);
+        reverseNode1.add(3);
+        reverseNode1.add(4);
+        reverseNode1.add(5);
+        reverseNode1.add(6);
+        System.out.println();
+        System.out.println("反转区间m到n：");
+        MyOneWayLinked.Node<Integer> head1 = AlgorithmAboutLinked.reverseBetween(reverseNode1.getHead(), 2, 4);
+        while (head1 != null) {
+            System.out.print(head1.value+"；");
+            head1 = head1.next;
+        }
     }
+
 }
